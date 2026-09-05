@@ -1,29 +1,63 @@
 # Digi Karyasthan Gateway for Home Assistant
 
-This repository installs the Digi Karyasthan Gateway app on Home Assistant OS or Home Assistant Supervised. It connects Home Assistant to the customer's Ente Karyasthan property through outbound HTTPS. No router port, Azure credential, Home Assistant address, or Home Assistant access token is entered in the Ente Karyasthan portal.
+Digi Karyasthan Gateway securely connects the smart products in your Home Assistant system to your Ente Karyasthan property. It uses an outbound encrypted connection. You do not need to open router ports or share Azure or Home Assistant credentials with the portal.
 
-[![Add the Digi Karyasthan repository to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FVinuAmazn%2FDigi-Karyasthan-Gateway)
+[![Add Digi Karyasthan to Home Assistant](https://my.home-assistant.io/badges/supervisor_add_addon_repository.svg)](https://my.home-assistant.io/redirect/supervisor_add_addon_repository/?repository_url=https%3A%2F%2Fgithub.com%2FVinuAmazn%2FDigi-Karyasthan-Gateway)
 
-## Customer installation
+## Before you start
 
-1. In Home Assistant, open **Settings → Apps → Install app**.
-2. Open the three-dot menu, choose **Repositories**, and add `https://github.com/VinuAmazn/Digi-Karyasthan-Gateway`.
-3. Open **Digi Karyasthan Gateway** and choose **Install**.
-4. In the Ente Karyasthan Smart portal, choose **Create activation code** for the property.
-5. In the app configuration, enter the displayed Gateway ID and one-time activation code.
-6. Enable **Start on boot** and **Watchdog**, then choose **Start**.
-7. Return to Ente Karyasthan Smart. The gateway should report online within one minute.
+You need:
 
-The activation code expires after 24 hours and can be used once. Creating another code revokes the previous gateway credential for that property.
+- Home Assistant OS or Home Assistant Supervised.
+- Administrator access to Home Assistant.
+- An Ente Karyasthan property with Digi Karyasthan Smart enabled.
+- Internet access for Home Assistant.
+- For Matter products: the Home Assistant Matter integration and compatible Matter or Thread hardware.
+- For Zigbee products: ZHA and a compatible Zigbee coordinator.
 
-## Supported installations
+Home Assistant Container does not have the Apps store. Ask Ente Karyasthan support to install the standalone gateway service for that installation type.
 
-The app requires Home Assistant OS or Home Assistant Supervised because it uses the Supervisor API. Home Assistant Container users should use the standalone Digi Karyasthan Linux gateway package.
+## Install and activate the gateway
 
-Matter pairing requires the Home Assistant Matter integration and compatible Matter radio/network support. Zigbee pairing requires ZHA and a compatible Zigbee coordinator. Manufacturer-cloud-only products require a supported vendor integration.
+1. Select **Add Digi Karyasthan to Home Assistant** above.
+2. Choose your Home Assistant address when My Home Assistant opens.
+3. Confirm **Add repository**. If nothing opens, use the manual repository steps below.
+4. In Home Assistant, open **Settings → Apps → Install app**.
+5. Find **Digi Karyasthan Gateway**, open it, and select **Install**.
+6. In the Ente Karyasthan Smart portal, open your property and select **Create activation code**.
+7. Keep that page open. The Gateway ID and activation code are shown only once, and the code expires after 24 hours.
+8. In Home Assistant, open **Digi Karyasthan Gateway → Configuration**.
+9. Paste the Gateway ID into `gateway_uuid` and the activation code into `claim_code`. Do not change `karyasthan_origin`.
+10. Select **Save**.
+11. Open the app's **Info** page. Enable **Start on boot** and **Watchdog**, then select **Start**.
+12. Wait up to one minute, return to the Ente Karyasthan portal, and select **Refresh devices**. The gateway should show **Online**.
 
-## Privacy and control
+## Manual repository method
 
-The gateway reports supported device state to the customer's Ente Karyasthan property. Newly discovered devices remain disabled for control until the customer reviews and enables them. Cameras, doorbells, and locks are excluded from automatic control.
+If the installation button does not open Home Assistant:
 
-Support: https://entekaryasthan.com
+1. Open **Home Assistant → Settings → Apps → Install app**.
+2. Open the three-dot menu and select **Repositories**.
+3. Paste `https://github.com/VinuAmazn/Digi-Karyasthan-Gateway` and select **Add**.
+4. Refresh the Apps page, find **Digi Karyasthan Gateway**, and continue from step 5 above.
+
+## Add a smart product
+
+1. Put the product into pairing mode using its reset or pairing button.
+2. In Ente Karyasthan Smart, select **Add a product**.
+3. Choose the product type and Matter, Zigbee, or Wi-Fi.
+4. For Matter, enter the numeric setup code printed below the product QR code.
+5. Select **Start pairing** and keep the product near the gateway.
+6. Wait for the product to appear, review its name and room, then enable control for that product.
+
+New devices start with control disabled. Cameras, doorbells, and locks require assisted setup and are excluded from automatic control.
+
+## If the gateway stays offline
+
+- Confirm the Digi Karyasthan Gateway app is running.
+- Open its **Log** tab and check the latest message.
+- Confirm Home Assistant has internet access and its date and time are correct.
+- If the code is expired, already used, or entered incorrectly, create a new activation code in the portal and replace both values in the app configuration. Creating a new code revokes the previous gateway credential for that property.
+- Restart the app and wait one minute.
+
+Do not post Gateway IDs, activation codes, app logs containing credentials, or customer information in a public GitHub issue. Contact Ente Karyasthan support through https://entekaryasthan.com.
