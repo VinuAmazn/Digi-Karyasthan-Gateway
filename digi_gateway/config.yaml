@@ -1,0 +1,21 @@
+name: Digi Karyasthan Gateway
+version: "1.1.0"
+slug: digi_karyasthan_gateway
+description: Securely connects this property to Ente Karyasthan Smart
+url: https://entekaryasthan.com
+arch:
+  - aarch64
+  - amd64
+  - armv7
+startup: application
+boot: auto
+init: false
+homeassistant_api: true
+options:
+  karyasthan_origin: https://entekaryasthan.com
+  gateway_uuid: ""
+  claim_code: ""
+schema:
+  karyasthan_origin: url
+  gateway_uuid: str
+  claim_code: password
