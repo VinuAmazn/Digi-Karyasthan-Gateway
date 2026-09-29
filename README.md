@@ -43,14 +43,13 @@ If the installation button does not open Home Assistant:
 
 ## Add a smart product
 
-1. Put the product into pairing mode using its reset or pairing button.
-2. In Ente Karyasthan Smart, select **Add a product**.
-3. Choose the product type and Matter, Zigbee, or Wi-Fi.
-4. For Matter, enter the numeric setup code printed below the product QR code.
-5. Select **Start pairing** and keep the product near the gateway.
-6. Wait for the product to appear, review its name and room, then enable control for that product.
+1. For a new Matter product, commission it with the Home Assistant mobile app, then refresh devices in the Ente Karyasthan portal. No second pairing is needed.
+2. To import a Matter product already connected to another controller, open that controller's sharing window and enter its fresh numeric sharing code in the portal. The gateway can join a product already on the local network; it cannot perform initial Bluetooth or Thread network setup.
+3. For Zigbee, configure a compatible ZHA coordinator first, put the product into pairing mode, and choose **Add a product** in the portal.
+4. For Wi-Fi, add a supported manufacturer integration in Home Assistant, then refresh devices in the portal.
+5. Review the product's name and room before enabling control. New devices start with control disabled.
 
-New devices start with control disabled. Cameras, doorbells, and locks require assisted setup and are excluded from automatic control.
+Cameras, doorbells, and locks require assisted setup and are excluded from automatic control.
 
 ## If the gateway stays offline
 
