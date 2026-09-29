@@ -23,7 +23,7 @@ The activation code expires after 24 hours and works once. The app exchanges it 
 1. Put the product into pairing mode.
 2. In Ente Karyasthan Smart, select **Add a product**.
 3. Choose the product type and connection method.
-4. Enter the Matter numeric setup code when requested, or press the Zigbee product pairing button.
+4. For a new Matter product, use the Home Assistant mobile app to commission it, then refresh devices in the portal; no second pairing is needed. To import a product already connected to another Matter controller, open that controller's sharing window and enter its fresh numeric sharing code in the portal. The gateway joins a product already on the local network; it does not perform Bluetooth or Thread network setup. For Zigbee, a supported ZHA coordinator must already be configured. For Wi-Fi, add the manufacturer's supported integration in Home Assistant first.
 5. Select **Start pairing**, keep the product near the gateway, and wait for it to appear.
 6. Review the product in the portal before enabling its controls.
 
@@ -32,3 +32,9 @@ The activation code expires after 24 hours and works once. The app exchanges it 
 If the gateway stays offline, confirm this app is running and check its **Log** tab. Verify internet access and correct date and time. If activation failed, create a new code in the portal, replace both activation values, save, and restart the app. Creating a new code revokes the previous gateway credential.
 
 Do not share activation codes or logs containing credentials. Contact Ente Karyasthan support through https://entekaryasthan.com.
+
+## Update to 1.2.0
+
+Refresh the app store repository, open Digi Karyasthan Gateway, and select Update. Existing per-gateway credentials are retained. Confirm the portal gateway version and a recent device reading before testing one approved low-risk device while at the property.
+
+The current portal supports Celsius thermostat setpoints from 16–32 °C. Fahrenheit thermostats remain read-only. Locks, pumps, garage doors, cameras and unsupported device types need a separate commissioned adapter. Discovery is limited to 100 entities per snapshot; a larger installation reports a warning and needs a commissioned entity list. Initial Matter/Thread commissioning, Zigbee radio compatibility and physical actuation require on-site verification.
