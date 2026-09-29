@@ -24,7 +24,7 @@ The activation code expires after 24 hours and works once. The app exchanges it 
 2. In Ente Karyasthan Smart, select **Add a product**.
 3. Choose the product type and connection method.
 4. For a new Matter product, use the Home Assistant mobile app to commission it, then refresh devices in the portal; no second pairing is needed. To import a product already connected to another Matter controller, open that controller's sharing window and enter its fresh numeric sharing code in the portal. The gateway joins a product already on the local network; it does not perform Bluetooth or Thread network setup. For Zigbee, a supported ZHA coordinator must already be configured. For Wi-Fi, add the manufacturer's supported integration in Home Assistant first.
-5. Select **Start pairing**, keep the product near the gateway, and wait for it to appear.
+5. For a shared Matter code or Zigbee product, select **Start pairing** and wait for it to appear. For a newly commissioned Matter or integrated Wi-Fi product, select **Refresh devices** instead.
 6. Review the product in the portal before enabling its controls.
 
 ## Troubleshooting
